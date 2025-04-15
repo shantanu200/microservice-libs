@@ -25,3 +25,7 @@ func InternalServerError(message string) *AppError {
 func UnprocessableEntityError(message string) *AppError {
 	return NewAppError(fiber.StatusUnprocessableEntity, message)
 }
+
+func BadRequestError(message string) *AppError {
+	return NewAppError(fiber.StatusBadRequest, message)
+}
