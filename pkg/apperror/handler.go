@@ -29,3 +29,7 @@ func UnprocessableEntityError(message string) *AppError {
 func BadRequestError(message string) *AppError {
 	return NewAppError(fiber.StatusBadRequest, message)
 }
+
+func LargeRequestBodyError(message string) *AppError {
+	return NewAppError(fiber.StatusRequestEntityTooLarge, message)
+}
