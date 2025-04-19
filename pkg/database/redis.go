@@ -45,7 +45,7 @@ func (r *Redis) Connect(options *types.RedisConnectionConfig) error {
 		})
 
 		ctx, cancel := context.WithTimeout(c, 10*time.Second)
-		cancel()
+		defer cancel()
 
 		if err := client.Ping(ctx).Err(); err != nil {
 			log.Printf("[REDIS] Connection failed, retrying... (%d/%d)", curr_tries, options.MaxRetries)
