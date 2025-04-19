@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sync"
 
+	"github.com/shantanu200/microservice-libs/types"
 	"github.com/spf13/viper"
 )
 
@@ -84,4 +85,14 @@ func LoadConfigFromEnv(prefix string) (*viper.Viper, error) {
 	})
 
 	return v, nil
+}
+
+func GetRedisConfig() *types.RedisConnectionConfig {
+	return &types.RedisConnectionConfig{
+		Addr:       v.GetString("redis.addr"),
+		Password:   v.GetString("redis.password"),
+		DB:         v.GetInt("redis.db"),
+		PoolSize:   v.GetInt("redis.pool_size"),
+		MaxRetries: v.GetInt("redis.max_retries"),
+	}
 }
